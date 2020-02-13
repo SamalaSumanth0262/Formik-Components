@@ -1,0 +1,23 @@
+label {
+  font-size: 16px;
+  color: #666666;
+  width: 100%;
+}
+input {
+  border-radius: 3px;
+  border: solid 1px white;
+  background-color: #f6f6f6;
+  width: inherit;
+  height: 40px;
+}
+.syndicate-error-text {
+  width: 450px;
+  color: red;
+  font-size: 12px;
+  margin-top: 4px;
+  margin-bottom: 8px;
+}
+.inline {
+  display: inline-flex;
+  align-items: center;
+}
