@@ -37,7 +37,7 @@ const TextArea = props => {
           type={props.type ? props.type : "text"}
           {...props} />
       </label>
-      <div className='syndicate-error-text'>
+      <div className='error-text'>
         <ErrorMessage name={props.labelName} />
       </div>
     </div>

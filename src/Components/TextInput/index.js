@@ -23,14 +23,16 @@ const TextInput = props => {
           {...props}
         />
       </label>
-      <div className='syndicate-error-text'>
+      <div className='error-text'>
         <ErrorMessage name={props.labelName} />
       </div>
     </div>
   );
 };
+
 TextInput.propTypes = {
-  labelName: PropTypes.string.isRequired
+  labelName: PropTypes.string.isRequired,
+  labelTitle: PropTypes.string.isRequired
 };
 
 export default TextInput;

@@ -1,0 +1,15 @@
+@import './variables';
+
+label {
+  font-size: 16px;
+  color: $theme-text-color;
+  width: 100%;
+}
+
+.text-mandatory {
+  color: $red-color;
+}
+
+.error-text {
+  color: $red-color;
+}

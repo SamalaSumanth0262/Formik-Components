@@ -37,7 +37,7 @@ const CkEditor = (props) => {
         <br />
         <Field name={props.labelName} component={customEditor} validate={props.validate} disabled={props.disabled} {...props} />
       </div>
-      <div className='syndicate-error-text'>
+      <div className='error-text'>
         <ErrorMessage name={props.labelName} />
       </div>
     </div >
