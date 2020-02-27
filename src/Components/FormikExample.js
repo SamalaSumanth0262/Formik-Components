@@ -9,6 +9,8 @@ import CheckBox from './CheckBox';
 import PhotoUpload from './PhotoUpload';
 import DropZone from './DropZone';
 import DropDown from './DropDown';
+import DatePicker from './DatePicker';
+import TextGroup from './TextGroup';
 //Yup Validaation STARTS 
 import { radioOptions, DropDownOptions } from '../constants';
 const exampleSchema = Yup.object().shape({
@@ -67,6 +69,19 @@ class FormikExample extends React.Component {
                   labelFor='drop_down'
                   labelName='drop_down'
                   isMandatory={true}
+                />
+                <DatePicker
+                  labelTitle='Date Picker'
+                  isMandatory={true}
+                  labelFor='date_picker'
+                  labelName='date_picker' />
+                <TextGroup
+                  // ref={}
+                  labelTitle="Text Group"
+                  labelFor="vesting_period"
+                  labelName="vesting_period"
+                  isMandatory={true}
+                  selectOptions={DropDownOptions}
                 />
               </div>
             </div>
