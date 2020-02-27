@@ -27,62 +27,76 @@ class FormikExample extends React.Component {
       name: "",
       text_area: "",
       cke_editor: ""
-    }
+    },
+    isDarkMode: false
   }
 
 
   handleSubmitForm = ({ values, actions }) => {
     console.log("TCL: FormikExample -> handleSubmitForm -> {values, actions}", { values, actions })
   }
+  handleDarkMode = (event) => {
+    this.setState({
+      isDarkMode: event.currentTarget.checked
+    })
+  }
 
   render() {
     let renderView = props => {
       return (
-        <form onSubmit={props.handleSubmit}>
-          <div className="container">
-            <div className='row'>
-              <div className="col-sm-6">
-                <TextInput type='text' labelName='name' labelTitle='Text Input' isMandatory={true} />
-                <TextArea type='text' labelName="text_area" labelTitle='TextArea' isMandatory={true} />
-                <CkEditor labelName='cke_editor' labelTitle="Check Your CKE Editor" isMandatory={true} />
-                <RadioBox labelName="radio_box" labelTitle="Radio Box" options={radioOptions} isMandatory={true} style={{ width: '6%' }} />
-                <CheckBox labelName='check_box' labelTitle="CheckBox" isMandatory={true} />
-                <button type="submit" className="btn btn-primary mt-5">Submit</button>
-              </div>
-              <div className="col-sm-6">
-                <PhotoUpload
-                  labelName="photo_upload"
-                  labelTitle="Upload Photo"
-                  labelFor="photo_upload"
-                  isMandatory={true}
-                />
-                <DropZone
-                  labelName="file_drop_zone"
-                  labelTitle="File Drop Zone"
-                  labelFor="File Drop Zone"
-                  isMandatory={true}
-                />
-                <DropDown
-                  split={false}
-                  labelTitle='Drop Down'
-                  option={DropDownOptions}
-                  labelFor='drop_down'
-                  labelName='drop_down'
-                  isMandatory={true}
-                />
-                <DatePicker
-                  labelTitle='Date Picker'
-                  isMandatory={true}
-                  labelFor='date_picker'
-                  labelName='date_picker' />
-                <TextGroup
-                  // ref={}
-                  labelTitle="Text Group"
-                  labelFor="vesting_period"
-                  labelName="vesting_period"
-                  isMandatory={true}
-                  selectOptions={DropDownOptions}
-                />
+        <form onSubmit={props.handleSubmit} id={this.state.isDarkMode ? 'formikDarkMode' : 'formikLightMode'}>
+          <div className="container-fluid bg-theme">
+            <nav className="navbar navbar-light justify-content-between nav-bar-bg">
+              <a className="navbar-brand">Formik Components Made Easy</a>
+              <form className="form-inline">
+                <input className="form-control mr-sm-2" type="checkbox" placeholder="DarkMode" aria-label="DarkMode" onClick={(e) => this.handleDarkMode(e)} /><span className='navbar-brand'>Dark Mode</span>
+              </form>
+            </nav>
+            <div className="container-fluid justify-content-center mt-5">
+              <div className='row justify-content-center mx-auto' style={{ 'width': '90%' }}>
+                <div className="col-sm-6">
+                  <TextInput type='text' labelName='name' labelTitle='Text Input' isMandatory={true} />
+                  <TextArea type='text' labelName="text_area" labelTitle='TextArea' isMandatory={true} />
+                  <CkEditor labelName='cke_editor' labelTitle="Check Your CKE Editor" isMandatory={true} />
+                  <RadioBox labelName="radio_box" labelTitle="Radio Box" options={radioOptions} isMandatory={true} style={{ width: '6%' }} />
+                  <CheckBox labelName='check_box' labelTitle="CheckBox" isMandatory={true} />
+                  <button type="submit" className="btn btn-primary mt-5">Submit</button>
+                </div>
+                <div className="col-sm-6">
+                  <PhotoUpload
+                    labelName="photo_upload"
+                    labelTitle="Upload Photo"
+                    labelFor="photo_upload"
+                    isMandatory={true}
+                  />
+                  <DropZone
+                    labelName="file_drop_zone"
+                    labelTitle="File Drop Zone"
+                    labelFor="File Drop Zone"
+                    isMandatory={true}
+                  />
+                  <DropDown
+                    split={false}
+                    labelTitle='Drop Down'
+                    option={DropDownOptions}
+                    labelFor='drop_down'
+                    labelName='drop_down'
+                    isMandatory={true}
+                  />
+                  <DatePicker
+                    labelTitle='Date Picker'
+                    isMandatory={true}
+                    labelFor='date_picker'
+                    labelName='date_picker' />
+                  <TextGroup
+                    // ref={}
+                    labelTitle="Text Group"
+                    labelFor="vesting_period"
+                    labelName="vesting_period"
+                    isMandatory={true}
+                    selectOptions={DropDownOptions}
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -90,14 +104,16 @@ class FormikExample extends React.Component {
       )
     }
     return (
-      <Formik
-        initialValues={this.state.initialValues}
-        render={renderView}
-        validationSchema={exampleSchema}
-        handleSubmit={({ values, actions }) => {
-          this.handleSubmitForm({ values, actions })
-        }}
-      />
+      <React.Fragment>
+        <Formik
+          initialValues={this.state.initialValues}
+          render={renderView}
+          validationSchema={exampleSchema}
+          handleSubmit={({ values, actions }) => {
+            this.handleSubmitForm({ values, actions })
+          }}
+        />
+      </React.Fragment>
     )
   }
 }
