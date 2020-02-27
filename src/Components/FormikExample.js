@@ -26,7 +26,14 @@ class FormikExample extends React.Component {
     initialValues: {
       name: "",
       text_area: "",
-      cke_editor: ""
+      cke_editor: "",
+      radio_box: null,
+      check_box: null,
+      photo_upload: null,
+      file_drop_zone: null,
+      drop_down: null,
+      date_picker: null,
+      text_group: null
     },
     isDarkMode: false
   }
@@ -43,6 +50,7 @@ class FormikExample extends React.Component {
 
   render() {
     let renderView = props => {
+      console.log("TCL: render -> props", props)
       return (
         <form onSubmit={props.handleSubmit} id={this.state.isDarkMode ? 'formikDarkMode' : 'formikLightMode'}>
           <div className="container-fluid bg-theme">
@@ -91,8 +99,8 @@ class FormikExample extends React.Component {
                   <TextGroup
                     // ref={}
                     labelTitle="Text Group"
-                    labelFor="vesting_period"
-                    labelName="vesting_period"
+                    labelFor="text_group"
+                    labelName="text_group"
                     isMandatory={true}
                     selectOptions={DropDownOptions}
                   />
