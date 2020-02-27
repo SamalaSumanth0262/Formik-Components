@@ -62,7 +62,7 @@ const DropDown = (props) => {
     <div className={props.split ? 'row m-0 field-row-pb' : 'esop-form-group'}>
       <label
         for={props.labelFor}
-        className={props.split ? 'col-lg-5 mt-2 p-0' : classnames({ 'form-disabled': props.disabled })}
+        className={props.split ? 'col-lg-5 p-0' : classnames({ 'form-disabled': props.disabled })}
       >
         {renderHtml(props.labelTitle)} {props.isMandatory ? <span className="text-mandatory">*</span> : ''}
       </label>

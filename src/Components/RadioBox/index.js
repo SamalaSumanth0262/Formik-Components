@@ -18,7 +18,7 @@ const RadioBox = (props) => {
               <Field
                 disabled={props.disabled}
                 type={"radio"}
-                className='mt-2'
+                className=''
                 name={props.labelName + '_' + `${option.labelName}`}
                 validate={props.validate}
                 {...props}

@@ -29,7 +29,7 @@ const CustomFileUpload = (props) => {
 const FileUpload = (props) => {
   return (
     <div className={props.split ? 'row m-0 field-row-pb' : 'esop-file-label'}>
-      <label for={props.labelFor} className={props.split && 'col-lg-5 mt-2 p-0'}>
+      <label for={props.labelFor} className={props.split && 'col-lg-5 p-0'}>
         {renderHtml(props.labelTitle)} {props.isMandatory ? <span className="text-mandatory">*</span> : ''}
       </label>
       <div className={props.split ? 'esop-file-group col-lg-5 pl-0' : 'esop-file-group'}>

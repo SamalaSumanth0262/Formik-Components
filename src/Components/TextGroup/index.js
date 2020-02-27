@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import {ErrorMessage, Field} from 'formik';
+import { ErrorMessage, Field } from 'formik';
 import PropTypes from 'prop-types';
 import React from 'react';
 import renderHtml from 'react-render-html';
@@ -25,7 +25,7 @@ const customStyles = {
   })
 };
 
-const CustomTextGroup = ({field, form, innerRef, ...props}) => {
+const CustomTextGroup = ({ field, form, innerRef, ...props }) => {
   const onChangeAction = (e) => {
     if (props.onOptionChange) props.onOptionChange(e);
   };
@@ -39,9 +39,9 @@ const CustomTextGroup = ({field, form, innerRef, ...props}) => {
           form.setFieldValue(field.name, changeEvent.target.value);
           if (props.onTextChange) props.onTextChange(changeEvent);
         }}
-        style={props.split ? {width: '70%'} : {}}
+        style={props.split ? { width: '70%' } : {}}
       />
-      <div className="esop-drop-view" style={props.split ? {width: '30%'} : {}}>
+      <div className="esop-drop-view" style={props.split ? { width: '30%' } : {}}>
         <Select
           ref={innerRef}
           isDisabled={props.disabled}
@@ -63,7 +63,7 @@ const TextGroup = React.forwardRef((props, ref) => {
     <div className={props.split ? 'row m-0 field-row-pb' : 'esop-form-group'}>
       <label
         for={props.labelFor}
-        className={props.split ? 'col-lg-5 mt-2 p-0' : classnames({'form-disabled': props.disabled})}
+        className={props.split ? 'col-lg-5 p-0' : classnames({ 'form-disabled': props.disabled })}
       >
         {props.labelTitle} {props.isMandatory ? <span className="text-mandatory">*</span> : ''}
       </label>
