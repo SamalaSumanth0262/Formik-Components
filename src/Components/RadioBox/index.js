@@ -1,32 +1,51 @@
-import React from 'react';
+import React, { useState } from 'react';
 import "./styles.scss";
 import { Field, ErrorMessage } from "formik";
 import PropTypes from "prop-types";
 import renderHtml from "react-render-html";
 
+
 const RadioBox = (props) => {
-  const { options, labelTitle, labelFor, width } = props
+  const { labelFor, labelTitle, isMandatory, disabled, labelName, options } = props;
+  const customRadioBox = (props) => {
+    const { options } = props;
+    let handleRadio = (e, props) => {
+      var { checked, name } = e.currentTarget
+      if (name === 'Yes') {
+        props.setFieldValue(props.labelName, checked)
+      } else {
+        props.setFieldValue(props.labelName, !checked)
+      }
+    }
+
+    return (
+      options.map((option) => {
+        return (
+          <div className='inline mr-5'>
+            <input type='radio' onChange={(e) => handleRadio(e, props)} name={option.labelTitle} {...props} /><label>{renderHtml(option.labelTitle)}</label>
+          </div>
+        )
+      })
+    )
+  }
+
+
   return (
     <div>
       <label for={labelFor}>
         {renderHtml(labelTitle)}
-        {props.isMandatory ? (<span className='text-mandatory'>&nbsp;*</span>) : ("")}
-        {options.map((option) => {
-          const { labelName } = option
-          return (
-            <label className="inline">
-              <Field
-                disabled={props.disabled}
-                type={"radio"}
-                className=''
-                name={props.labelName + '_' + `${option.labelName}`}
-                validate={props.validate}
-                {...props}
-              />
-              {renderHtml(labelName)}
-            </label>
-          )
-        })}
+        {isMandatory ? (<span className='text-mandatory'>&nbsp;*</span>) : ("")}
+        <label className="inline">
+          <Field
+            disabled={disabled}
+            type={"radio"}
+            className=''
+            name={labelName}
+            validate={true}
+            component={customRadioBox}
+            {...props}
+          />
+        </label>
       </label>
       <div className='error-text'>
         <ErrorMessage name={props.labelName} />

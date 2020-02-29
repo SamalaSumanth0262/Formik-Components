@@ -33,7 +33,10 @@ class FormikExample extends React.Component {
       file_drop_zone: null,
       drop_down: null,
       date_picker: null,
-      text_group: null
+      text_group: null,
+      radio_box: null,
+      radio_box_Yes: null,
+      radio_box_No: null
     },
     isDarkMode: false
   }
@@ -42,6 +45,7 @@ class FormikExample extends React.Component {
   handleSubmitForm = ({ values, actions }) => {
     console.log("TCL: FormikExample -> handleSubmitForm -> {values, actions}", { values, actions })
   }
+
   handleDarkMode = (event) => {
     this.setState({
       isDarkMode: event.currentTarget.checked
@@ -63,47 +67,67 @@ class FormikExample extends React.Component {
             <div className="container-fluid justify-content-center mt-5">
               <div className='row justify-content-center mx-auto' style={{ 'width': '90%' }}>
                 <div className="col-sm-6">
-                  <TextInput type='text' labelName='name' labelTitle='Text Input' isMandatory={true} />
-                  <TextArea type='text' labelName="text_area" labelTitle='TextArea' isMandatory={true} />
-                  <CkEditor labelName='cke_editor' labelTitle="Check Your CKE Editor" isMandatory={true} />
-                  <RadioBox labelName="radio_box" labelTitle="Radio Box" options={radioOptions} isMandatory={true} style={{ width: '6%' }} />
-                  <CheckBox labelName='check_box' labelTitle="CheckBox" isMandatory={true} />
+                  <div className="mt-3">
+                    <TextInput type='text' labelName='name' labelTitle='Text Input' isMandatory={true} />
+                  </div>
+                  <div className="mt-3">
+                    <TextArea type='text' labelName="text_area" labelTitle='TextArea' isMandatory={true} />
+                  </div>
+                  <div className="mt-3">
+                    <CkEditor labelName='cke_editor' labelTitle="Check Your CKE Editor" isMandatory={true} />
+                  </div>
+                  <div className="mt-3">
+                    <RadioBox labelName="radio_box" labelTitle="Radio Box" options={radioOptions} isMandatory={true} {...props} />
+                  </div>
+                  <div className="mt-3">
+                    <CheckBox labelName='check_box' labelTitle="CheckBox" isMandatory={true} />
+                  </div>
                   <button type="submit" className="btn btn-primary mt-5">Submit</button>
                 </div>
                 <div className="col-sm-6">
-                  <PhotoUpload
-                    labelName="photo_upload"
-                    labelTitle="Upload Photo"
-                    labelFor="photo_upload"
-                    isMandatory={true}
-                  />
-                  <DropZone
-                    labelName="file_drop_zone"
-                    labelTitle="File Drop Zone"
-                    labelFor="File Drop Zone"
-                    isMandatory={true}
-                  />
-                  <DropDown
-                    split={false}
-                    labelTitle='Drop Down'
-                    option={DropDownOptions}
-                    labelFor='drop_down'
-                    labelName='drop_down'
-                    isMandatory={true}
-                  />
-                  <DatePicker
-                    labelTitle='Date Picker'
-                    isMandatory={true}
-                    labelFor='date_picker'
-                    labelName='date_picker' />
-                  <TextGroup
-                    // ref={}
-                    labelTitle="Text Group"
-                    labelFor="text_group"
-                    labelName="text_group"
-                    isMandatory={true}
-                    selectOptions={DropDownOptions}
-                  />
+                  <div className="mt-3">
+                    <PhotoUpload
+                      labelName="photo_upload"
+                      labelTitle="Upload Photo"
+                      labelFor="photo_upload"
+                      isMandatory={true}
+                    />
+                  </div>
+                  <div className="mt-3">
+                    <DropZone
+                      labelName="file_drop_zone"
+                      labelTitle="File Drop Zone"
+                      labelFor="File Drop Zone"
+                      isMandatory={true}
+                    />
+                  </div>
+                  <div className="mt-3">
+                    <DropDown
+                      split={false}
+                      labelTitle='Drop Down'
+                      option={DropDownOptions}
+                      labelFor='drop_down'
+                      labelName='drop_down'
+                      isMandatory={true}
+                    />
+                  </div>
+                  <div className="mt-3">
+                    <DatePicker
+                      labelTitle='Date Picker'
+                      isMandatory={true}
+                      labelFor='date_picker'
+                      labelName='date_picker' />
+                  </div>
+                  <div className="mt-3">
+                    <TextGroup
+                      // ref={}
+                      labelTitle="Text Group"
+                      labelFor="text_group"
+                      labelName="text_group"
+                      isMandatory={true}
+                      selectOptions={DropDownOptions}
+                    />
+                  </div>
                 </div>
               </div>
             </div>

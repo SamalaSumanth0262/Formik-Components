@@ -17,7 +17,6 @@ const TextInput = props => {
         <Field
           disabled={props.disabled}
           type={props.type ? props.type : "text"}
-          className=''
           name={props.labelName}
           validate={props.validate}
           {...props}

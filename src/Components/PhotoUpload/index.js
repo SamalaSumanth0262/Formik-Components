@@ -2,6 +2,7 @@ import { ErrorMessage, Field } from 'formik';
 import _ from 'lodash';
 import React, { useState } from 'react';
 import renderHTML from 'react-render-html';
+import PropTypes from "prop-types";
 import './styles.scss';
 const CustomPhotoUpload = (props) => {
   let [filePreview, setFilePreview] = useState('https://via.placeholder.com/80');
@@ -17,15 +18,15 @@ const CustomPhotoUpload = (props) => {
       <div className="d-inline-flex">
         {props && (
           <img
-            className="mt-1"
             src={!_.isEmpty(props.field.value) ? props.field.value : filePreview}
             width="70"
             height="70"
+            {...props}
           />
         )}
         <div className="upload-btn-wrapper">
           <div style={{ marginTop: '17px' }}>
-            <button className='btn btn-primary' onClick={handleUpload}>Upload</button>
+            <button className='btn btn-primary ml-5' onClick={handleUpload}>Upload</button>
           </div>
           <input type="file" accept="image/*" name="myfile" onChange={handleUpload} />
         </div>
@@ -35,20 +36,24 @@ const CustomPhotoUpload = (props) => {
 };
 
 const PhotoUpload = (props) => {
-  let { errors, touched } = props;
-
+  let { labelFor, labelTitle, isMandatory, labelName, notes } = props;
   return (
-    <div className="esop-form-group">
-      <label htmlFor={props.labelFor}>
-        {props.labelTitle} {props.isMandatory ? <span className="text-mandatory">*</span> : ''}
+    <div>
+      <label htmlFor={labelFor}>
+        {labelTitle} {isMandatory ? <span className="text-mandatory">*</span> : ''}
       </label>
-      <Field name={props.labelName} component={CustomPhotoUpload} />
-      {props.notes && <div className="esop-file-notes">{renderHTML(props.notes)}</div>}
-      <div className="esop-error-text">
-        <ErrorMessage name={props.labelName} />
+      <Field name={labelName} component={CustomPhotoUpload} />
+      {notes && <div>{renderHTML(notes)}</div>}
+      <div className="error-text">
+        <ErrorMessage name={labelName} />
       </div>
     </div>
   );
 };
+
+PhotoUpload.propTypes = {
+  labelName: PropTypes.string.isRequired,
+  labelTitle: PropTypes.string.isRequired
+}
 
 export default PhotoUpload;

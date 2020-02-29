@@ -1,10 +1,10 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useEffect, useCallback } from 'react';
 import './styles.scss';
 import { Field, ErrorMessage } from "formik";
 import PropTypes from "prop-types";
 import renderHtml from 'react-render-html';
 import { useDropzone } from 'react-dropzone';
-
+import _ from 'lodash';
 const baseStyle = {
   flex: 1,
   display: 'flex',
@@ -34,6 +34,14 @@ const rejectStyle = {
 };
 
 const CustomDropDown = (props) => {
+
+  const onDrop = useCallback((droppedFiles) => {
+    const { form: { setFieldValue }, labelName } = props;
+    if (!_.isEmpty(droppedFiles)) {
+      setFieldValue(labelName, droppedFiles)
+    }
+  }, [props])
+
   const {
     acceptedFiles,
     getRootProps,
@@ -41,34 +49,43 @@ const CustomDropDown = (props) => {
     isDragActive,
     isDragAccept,
     isDragReject
-  } = useDropzone({ accept: 'image/*' });
+  } = useDropzone({ accept: 'image/*', onDrop: onDrop });
+
+  useEffect(() => {
+    const { form: { setFieldValue, values }, labelName } = props;
+
+    if (values.file_drop_zone == null) {
+      setFieldValue(labelName, acceptedFiles);
+    }
+  })
+
   const files = acceptedFiles.map(file => (
     <li key={file.path}>
       {file.path} - {file.size} bytes
     </li>
   ));
+
   const style = useMemo(() => ({
     ...baseStyle,
     ...(isDragActive ? activeStyle : {}),
     ...(isDragAccept ? acceptStyle : {}),
     ...(isDragReject ? rejectStyle : {})
-  }), [
-    isDragActive,
-    isDragReject
-  ]);
+  }), [isDragAccept, isDragActive, isDragReject]);
+
   return (
-    <section className="container">
+    <React.Fragment>
       <div {...getRootProps({ style })}>
         <input {...getInputProps()} />
         <p>Drag 'n' drop some files here, or click to select files</p>
       </div>
       <aside>
-        <h4>Files</h4>
+        <div>Files</div>
         <ul>{files}</ul>
       </aside>
-    </section>
+    </React.Fragment>
   );
 }
+
 const DropZone = (props) => {
   return (
     <div style={{ width: "100%" }}>
@@ -95,4 +112,8 @@ const DropZone = (props) => {
   )
 }
 
+DropZone.propTypes = {
+  labelName: PropTypes.string.isRequired,
+  labelTitle: PropTypes.string.isRequired
+}
 export default DropZone;

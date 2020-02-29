@@ -2,11 +2,11 @@ export const radioOptions = [
   {
     name: "Yes",
     value: true,
-    labelName: "Yes"
+    labelTitle: "Yes"
   }, {
     name: "No",
     value: false,
-    labelName: 'No'
+    labelTitle: 'No'
   }
 ]
 
