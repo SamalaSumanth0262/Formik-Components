@@ -36,7 +36,9 @@ class FormikExample extends React.Component {
       text_group: null,
       radio_box: null,
       radio_box_Yes: null,
-      radio_box_No: null
+      radio_box_No: null,
+      text_group_input_value: null,
+      text_group_select_value: null
     },
     isDarkMode: false
   }
@@ -120,10 +122,9 @@ class FormikExample extends React.Component {
                   </div>
                   <div className="mt-3">
                     <TextGroup
-                      // ref={}
                       labelTitle="Text Group"
-                      labelFor="text_group"
-                      labelName="text_group"
+                      labelFor="text_group_input_value"
+                      labelName="text_group_input_value"
                       isMandatory={true}
                       selectOptions={DropDownOptions}
                     />

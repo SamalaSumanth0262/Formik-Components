@@ -2,7 +2,6 @@ import classnames from 'classnames';
 import { ErrorMessage, Field } from 'formik';
 import PropTypes from 'prop-types';
 import React from 'react';
-import renderHtml from 'react-render-html';
 import Select from 'react-select';
 import './styles.scss';
 const customStyles = {
@@ -26,24 +25,23 @@ const customStyles = {
 };
 
 const CustomTextGroup = ({ field, form, innerRef, ...props }) => {
-  const onChangeAction = (e) => {
-    if (props.onOptionChange) props.onOptionChange(e);
+
+  const onChangeAction = (option) => {
+    form.setFieldValue('text_group_select_value', option) //TO_DO: make this dynamic "text_group_select_value"
   };
+
   return (
-    <div className={props.split ? 'col-lg-5 p-0 esop-text-group' : 'esop-text-group'}>
+    <div className='d-inline-flex'>
       <input
         type="text"
+        onChange={(changeEvent) => {
+          form.setFieldValue(field.labelName, changeEvent.target.value);
+        }}
         {...field}
         {...props}
-        onChange={(changeEvent) => {
-          form.setFieldValue(field.name, changeEvent.target.value);
-          if (props.onTextChange) props.onTextChange(changeEvent);
-        }}
-        style={props.split ? { width: '70%' } : {}}
       />
-      <div className="esop-drop-view" style={props.split ? { width: '30%' } : {}}>
+      <div>
         <Select
-          ref={innerRef}
           isDisabled={props.disabled}
           isSearchable={false}
           styles={customStyles}
@@ -58,36 +56,22 @@ const CustomTextGroup = ({ field, form, innerRef, ...props }) => {
 };
 
 // To access value of dropdown from select element create a ref in parent component
-const TextGroup = React.forwardRef((props, ref) => {
+const TextGroup = ((props, ref) => {
+  const { labelFor, labelTitle, isMandatory, disabled, selectOptions, labelName } = props
   return (
-    <div className={props.split ? 'row m-0 field-row-pb' : 'esop-form-group'}>
-      <label
-        for={props.labelFor}
-        className={props.split ? 'col-lg-5 p-0' : classnames({ 'form-disabled': props.disabled })}
-      >
-        {props.labelTitle} {props.isMandatory ? <span className="text-mandatory">*</span> : ''}
+    <div>
+      <label for={labelFor}>
+        {labelTitle} {isMandatory ? <span className="text-mandatory">*</span> : ''}
       </label>
-
       <Field
-        innerRef={ref}
-        disabled={props.disabled}
-        name={props.labelName}
-        selectOptions={props.selectOptions}
+        disabled={disabled}
+        name={labelName}
+        selectOptions={selectOptions}
         component={CustomTextGroup}
-        split={props.split}
-        defaultValue={props.defaultValue}
-        onTextChange={props.onTextChange}
-        onOptionChange={props.onOptionChange}
+        {...props}
       />
-      {props.split && <div className={props.split && 'col-lg-5'} />}
-
-      {props.notes && (
-        <div className={props.split ? 'esop-notes col-lg-5 pl-0' : 'esop-notes'}>{renderHtml(props.notes)}</div>
-      )}
-      {props.split && !props.notes && <div className={'col-lg-5'} />}
-      {props.split && <div className={props.split && 'col-lg-5'} />}
-      <div className={props.split ? 'esop-error-text col-lg-5 pl-0' : 'esop-error-text'}>
-        <ErrorMessage name={props.labelName} />
+      <div>
+        <ErrorMessage name={labelName} />
       </div>
     </div>
   );

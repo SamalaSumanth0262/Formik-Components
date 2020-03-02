@@ -21,27 +21,27 @@ const customStyles = {
 const CustomReactSelect = (props) => {
   let {
     form: { setFieldValue, setFieldTouched },
-    field: { name, value }
+    field: { name, value },
+    placeholder,
+    option
   } = props;
   return (
     <div>
       <Select
         isClearable={false}
         styles={customStyles}
-        options={props.option}
+        options={option}
         onChange={(e) => {
           setFieldTouched(name);
           setFieldValue(name, e);
-          if (props.isCustomHandle) {
-            props.handleCustom(e.value, props);
-          }
         }}
         value={value}
-        placeholder={props.placeholder}
+        placeholder={placeholder}
       />
     </div>
   );
 };
+
 const DropDown = (props) => {
   const { labelFor, labelTitle, isMandatory, disabled, labelName, placeholder, option } = props;
   return (
