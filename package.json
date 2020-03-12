@@ -1,7 +1,7 @@
 {
-  "name": "my_formik",
-  "version": "0.1.0",
-  "private": true,
+  "name": "formik-components-simple",
+  "version": "1.0.0",
+  "private": false,
   "dependencies": {
     "@ckeditor/ckeditor5-build-classic": "^16.0.0",
     "@ckeditor/ckeditor5-react": "^2.1.0",
@@ -41,5 +41,30 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "description": "[![Netlify Status](https://api.netlify.com/api/v1/badges/9daabf7c-6628-4711-9566-6e23f01a2556/deploy-status)](https://app.netlify.com/sites/custom-formik/deploys)",
+  "main": "index.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SamalaSumanth0262/Formik-Components.git"
+  },
+  "keywords": [
+    "Formik",
+    "Components",
+    "Formik",
+    "TextArea",
+    "Formik",
+    "Radio",
+    "Formik",
+    "Formik",
+    "Jared",
+    "Palmer"
+  ],
+  "author": "Samala Sumanth",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SamalaSumanth0262/Formik-Components/issues"
+  },
+  "homepage": "https://github.com/SamalaSumanth0262/Formik-Components#readme"
 }
