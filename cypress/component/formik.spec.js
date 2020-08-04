@@ -71,7 +71,7 @@ describe('Mounting a formik components', () => {
     }} />)
   })
 
-  it('should render Drop Zone', () => {
+  it('should render Drop Zone Plugin', () => {
     mount(<Formik render={() => {
       return (<DropZone
         labelName="file_drop_zone"
