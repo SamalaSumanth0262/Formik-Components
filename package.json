@@ -20,7 +20,6 @@
     "react-scripts": "3.3.1",
     "react-select": "^3.0.8",
     "react-select-v2": "^2.4.2",
-    "webpack": "^4.41.5",
     "yup": "^0.27.0"
   },
   "scripts": {
