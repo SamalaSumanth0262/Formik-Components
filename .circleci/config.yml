@@ -31,6 +31,3 @@ jobs:
 
       # run tests!
       - run: npm run cy:run
-      - run:
-          name: Danger
-          command: yarn danger ci
