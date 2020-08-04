@@ -31,7 +31,7 @@ jobs:
 
       # run tests!
       - run: yarn lint --quiet
-      - run: yarn test
+      - run: npm run cy:run
       - run:
           name: Danger
           command: yarn danger ci
