@@ -20,13 +20,13 @@
     "react-scripts": "3.3.1",
     "react-select": "^3.0.8",
     "react-select-v2": "^2.4.2",
-    "webpack": "^4.41.5",
     "yup": "^0.27.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "cy:run": "cypress run --parallel --record --key 0b20a7a0-d8be-4b5c-808c-09ccb8790ab1",
+    "test": "start-server-and-test start http://localhost:3030 cy:run",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -43,5 +43,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "start-server-and-test": "^1.11.2"
   }
 }
