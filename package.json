@@ -1,6 +1,7 @@
 {
   "name": "my_formik",
   "version": "0.1.0",
+  "description": "A repo where custom formik are built & Handle form without &#128514",
   "private": true,
   "dependencies": {
     "@ckeditor/ckeditor5-build-classic": "^16.0.0",
