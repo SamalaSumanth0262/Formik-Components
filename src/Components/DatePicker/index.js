@@ -1,7 +1,7 @@
 import React from 'react';
 import { Field, ErrorMessage } from "formik";
 import renderHtml from 'react-render-html';
-
+import './styles.scss'
 const DatePicker = (props) => {
   return (
     <div>

@@ -3,7 +3,7 @@ import _ from 'lodash';
 import React, { useState } from 'react';
 import renderHTML from 'react-render-html';
 import PropTypes from "prop-types";
-// import './styles.scss';
+import './styles.scss';
 const CustomPhotoUpload = (props) => {
   let [filePreview, setFilePreview] = useState('https://via.placeholder.com/80');
   let handleUpload = (event) => {
@@ -22,6 +22,7 @@ const CustomPhotoUpload = (props) => {
             width="70"
             height="70"
             {...props}
+            alt='some_image'
           />
         )}
         <div className="upload-btn-wrapper">

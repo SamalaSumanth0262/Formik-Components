@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
-// import "./styles.scss";
+import React from 'react';
+import "./styles.scss";
 import { Field, ErrorMessage } from "formik";
 import PropTypes from "prop-types";
 import renderHtml from "react-render-html";
 
 
 const RadioBox = (props) => {
-  const { labelFor, labelTitle, isMandatory, disabled, labelName, options } = props;
+  const { labelFor, labelTitle, isMandatory, disabled, labelName } = props;
   const customRadioBox = (props) => {
     const { options } = props;
     let handleRadio = (e, props) => {
@@ -58,10 +58,6 @@ RadioBox.propTypes = {
   labelName: PropTypes.string.isRequired,
   labelTitle: PropTypes.string.isRequired,
   options: PropTypes.array.isRequired,
-  options: PropTypes.arrayOf(PropTypes.shape({
-    name: PropTypes.string,
-    value: PropTypes.bool
-  })),
   width: PropTypes.string.isRequired
 }
 

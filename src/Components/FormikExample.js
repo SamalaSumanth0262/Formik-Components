@@ -34,7 +34,6 @@ class FormikExample extends React.Component {
       drop_down: null,
       date_picker: null,
       text_group: null,
-      radio_box: null,
       radio_box_Yes: null,
       radio_box_No: null,
       text_group_input_value: null,
@@ -61,7 +60,7 @@ class FormikExample extends React.Component {
         <form onSubmit={props.handleSubmit} id={this.state.isDarkMode ? 'formikDarkMode' : 'formikLightMode'}>
           <div className="container-fluid bg-theme">
             <nav className="navbar navbar-light justify-content-between nav-bar-bg">
-              <a className="navbar-brand">Formik Components Made Easy</a>
+              <a className="navbar-brand" href='https://twitter.com/sumanth0262'>Samala Sumanth</a>
               <form className="form-inline">
                 <input className="form-control mr-sm-2" type="checkbox" placeholder="DarkMode" aria-label="DarkMode" onClick={(e) => this.handleDarkMode(e)} /><span className='navbar-brand'>Dark Mode</span>
               </form>

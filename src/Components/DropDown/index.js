@@ -1,7 +1,7 @@
 import React from 'react';
 import { Field, ErrorMessage } from 'formik';
 import PropTypes from 'prop-types';
-// import './styles.scss';
+import './styles.scss';
 import Select from 'react-select';
 import renderHtml from 'react-render-html';
 
