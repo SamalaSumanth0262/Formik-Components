@@ -59,12 +59,6 @@ class FormikExample extends React.Component {
       return (
         <form onSubmit={props.handleSubmit} id={this.state.isDarkMode ? 'formikDarkMode' : 'formikLightMode'}>
           <div className="container-fluid bg-theme">
-            <nav className="navbar navbar-light justify-content-between nav-bar-bg">
-              <a className="navbar-brand" href='https://twitter.com/sumanth0262'>Samala Sumanth</a>
-              <form className="form-inline">
-                <input className="form-control mr-sm-2" type="checkbox" placeholder="DarkMode" aria-label="DarkMode" onClick={(e) => this.handleDarkMode(e)} /><span className='navbar-brand'>Dark Mode</span>
-              </form>
-            </nav>
             <div className="container-fluid justify-content-center mt-5">
               <div className='row justify-content-center mx-auto' style={{ 'width': '90%' }}>
                 <div className="col-sm-6">
