@@ -139,7 +139,7 @@ class FormikExample extends React.Component {
       <React.Fragment>
         <Formik
           initialValues={this.state.initialValues}
-          render={renderView}
+          children={renderView}
           validationSchema={exampleSchema}
           handleSubmit={({ values, actions }) => {
             this.handleSubmitForm({ values, actions })
